@@ -1,0 +1,8 @@
+
+#itemList > li:last-of-type {
+  border-bottom: 1px solid #ddd;
+}
+.selected {
+  color: #fff;
+  background-color: #116cd6 !important;
+}

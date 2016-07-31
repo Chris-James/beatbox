@@ -1,0 +1,32 @@
+<footer class="toolbar toolbar-footer">
+  <div class="toolbar-actions">
+
+    <div class="btn-group pull-left">
+      <button class="btn btn-default" on-click="quit">
+        <span class="icon icon-cog"></span>
+      </button>
+      <button class="btn btn-default {{ currentLocation === rootDirectory && !playlistActive && !searchActive ? 'btn-disabled' : '' }}" on-click="goBack">
+        <span class="icon icon-left-open"></span>
+      </button>
+      <button class="btn btn-default {{ playlistActive ? 'btn-disabled' : '' }}" on-click="showPlaylist">
+        <span class="icon icon-note"></span>
+      </button>
+    </div>
+
+    <div class="btn-group pull-right">
+      <button class="btn btn-default" on-click="play">
+        <span class="icon icon-play"></span>
+      </button>
+      <button class="btn btn-default" on-click="pause">
+        <span class="icon icon-pause"></span>
+      </button>
+      <button class="btn btn-default" on-click="jumpBack">
+        <span class="icon icon-to-start"></span>
+      </button>
+      <button class="btn btn-default" on-click="jumpForward">
+        <span class="icon icon-to-end"></span>
+      </button>
+    </div>
+
+  </div>
+</footer>

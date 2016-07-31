@@ -1,0 +1,55 @@
+
+<header class="toolbar toolbar-header">
+  {{> header}}
+</header>
+
+<div>{{> search}}</div>
+<div>{{> map}}</div>
+
+<div class="window-content">
+  {{>list}}
+</div>
+
+<footer class="toolbar toolbar-footer">
+  {{> footer}}
+</footer>
+
+
+{{#partial item}}
+  {{#if type === 'folder'}}
+    <li on-click="getContent:{{path}}" class="list-group-item {{ isCurrentlyActive(name) ? 'selected': '' }}">
+      {{> itemContent }}
+    </li>
+  {{else}}
+    {{#if !inPlaylist(name)}}
+      <li on-click="addToPlaylist:{{name}},{{path}}" class="list-group-item {{ isCurrentlyActive(name) ? 'selected': '' }}">
+        {{> itemContent }}
+      </li>
+    {{else}}
+      <li on-click="removeFromPlaylist:{{name}}" class="list-group-item {{ isCurrentlyActive(name) ? 'selected': '' }}">
+        {{> itemContent }}
+      </li>
+    {{/if}}
+  {{/if}}
+{{/partial}}
+
+{{#partial itemContent}}
+  <div class="media-body">
+    <div class="pull-left">
+      <p>{{ name }}</p>
+    </div>
+    <div class="pull-right">
+      {{#if type === 'folder'}}
+        <span class="icon icon-right-open-big"></span>
+      {{else}}
+        {{#if isCurrentlyPlaying(name)}}
+          <span style="color: #3498db;" class="icon icon-note"></span>
+        {{else}}
+          {{#if inPlaylist(name) && !playlistActive}}
+            <span style="color: #27ae60;" class="icon icon-check"></span>
+          {{/if}}
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+{{/partial}}
