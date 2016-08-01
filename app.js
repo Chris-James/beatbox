@@ -20,6 +20,7 @@ const _ = require('lodash');
 const isFolder = require("./helpers").isFolder;
 const isSong = require("./helpers").isSong;
 const playSongs = require("./helpers").playSongs;
+const reverse = require("./helpers").reverseString;
 
 const app = new Ractive({
   el: '#app',
