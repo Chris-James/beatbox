@@ -214,6 +214,11 @@ app.on({
           let itemName = item.name;
           let itemPath = item.path_lower;
 
+          // NOTE: Reverse the id to counteract the way Dropbox assigns ids
+          // (which begins most ids with the same 19 characters). Slice the
+          // first 3 chars because all ids start with 'id:'
+          let itemId   = reverse(item.id.slice(3));
+
           if (isFolder(itemType) || isSong(itemName)) {
 
             // Remove file format from songs
@@ -222,7 +227,8 @@ app.on({
             newItems.push({
               'type': itemType,
               'name': itemName,
-              'path': itemPath
+              'path': itemPath,
+              'id'  : itemId
             });
           }
         });
