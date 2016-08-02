@@ -25,6 +25,7 @@
     "lodash": "^4.13.1",
     "ractive": "^0.7.3",
     "ractive-require-templates": "^1.0.2",
-    "ractive-transitions-slide": "^0.4.0"
+    "ractive-transitions-slide": "^0.4.0",
+    "request": "^2.74.0"
   }
 }
