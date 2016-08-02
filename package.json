@@ -1,6 +1,6 @@
 {
   "name": "beatbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A menu bar application to stream & play music from Dropbox.",
   "main": "index.js",
   "scripts": {
