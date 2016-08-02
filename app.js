@@ -232,6 +232,9 @@ app.on({
           }
         });
         this.set('items', newItems);
+
+        // Cache result in history so we don't need to hit the API if we visit
+        // this directory again.
         this.set(`history.${inputPath}`, newItems);
       })
       .catch(error => {
