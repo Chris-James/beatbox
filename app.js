@@ -10,6 +10,7 @@ let audio;
 const client = new Client()
 
 const config = require('./config');
+const request = require("request");
 
 // Dropbox
 const Dropbox = require('dropbox');
