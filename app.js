@@ -44,6 +44,7 @@ const app = new Ractive({
     playlist: [],
     searchResults: [],
     history: {},
+    songs: {},
     playlistActive: false,
     searchActive: false,
     playlistPosition: 0,
