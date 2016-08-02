@@ -20,44 +20,6 @@ module.exports = {
       });
     }
   },
-  // getContent: function(inputPath) {
-  //   map.set('currentLocation', inputPath);
-  //   footer.set('currentLocation', inputPath);
-  //   if (_.has(HISTORY, inputPath)) {
-  //     allItems = HISTORY[inputPath];
-  //     footer.fire('showAllItems');
-  //   } else {
-  //     dbx.filesListFolder({path: inputPath})
-  //       .then(response => {
-  //         let newItems = [];
-  //         response.entries.forEach(item => {
-  //
-  //           let itemType = item['.tag'];
-  //           let itemName = item.name;
-  //           let itemPath = item.path_lower;
-  //
-  //           if (isFolder(itemType) || isSong(itemName)) {
-  //
-  //             // Remove file format from songs
-  //             itemName = isSong(itemName) ? itemName.slice(0,-4) : itemName;
-  //
-  //             newItems.push({
-  //               'type': itemType,
-  //               'name': itemName,
-  //               'path': itemPath
-  //             });
-  //           }
-  //         });
-  //         allItems = newItems;
-  //         HISTORY[inputPath] = newItems;
-  //         footer.fire('showAllItems');
-  //       })
-  //       .catch(error => {
-  //         console.log(error)
-  //          alert(`Error in getContent: ${error}`);
-  //       });
-  //   }
-  // },
   reverseString: function(string) {
     let output = '';
     for (let i = string.length - 1; i >= 0; i--) {
