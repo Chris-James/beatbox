@@ -117,10 +117,10 @@ app.on({
       audio.currentTime = 0;
       this.set('playing', false);
 
-      // If jumpBack is called while playing the last song in the
+      // NOTE: If jumpBack is called while playing the last song in the
       // playlist, the value of playlistPosition will be set to -1.
-      // Since the next value is 0 (the start of the playlist) it doesn't cause
-      // an error in playback.
+      // Since the next value is 0 (the start of the playlist) it doesn't
+      // cause an error in playback.
       this.subtract('playlistPosition');
 
       this.fire('play');
