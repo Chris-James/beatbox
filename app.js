@@ -147,8 +147,7 @@ app.on({
     } else {
       if (!!playlist && !playing) {
 
-        // playlistPosition has to be incremented for the next call to play.
-        // We do this asap in case jumpForward is pressed.
+        // NOTE: playlistPosition is incremented for the next call to play.
         this.add('playlistPosition');
 
         // After incrementing our position, if we have reached the end of the
