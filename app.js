@@ -286,10 +286,31 @@ app.on({
         this.push('playlist', song);
         this.update();
 
-      })
-      .catch(error => {
-        console.log(`Error in add: ${_.valuesIn(error)}`);
-      });
+      } else {
+
+        // The song is a new request.
+        // Get a streamable link for the song from Dropbox & cache it.
+        dbx.filesGetTemporaryLink({path: path})
+        .then(response => {
+
+          let song = {
+            id: id,
+            path: path,
+            name: response.metadata.name.slice(0,-4),
+            link: response.link
+          };
+
+          // Push song onto playlist
+          this.push('playlist', song);
+
+          // Cache song with streamable link in case we request it again
+          this.set(`songs.${song.id}`, song);
+          this.update();
+        })
+        .catch(
+          error => { console.error(`Error in add: ${error.error}`); }
+        );
+      }
     } else {
 
       // The song selected IS in the playlist, remove it.
