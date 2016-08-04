@@ -286,13 +286,7 @@ app.on({
       _.remove(this.get('playlist'), function(song) { return song.name === name });
       this.update();
     }
-  },
 
-  removeFromPlaylist: function(name) {
-    this.set('currentlyActive', name);
-    const newPlaylist = _.remove(this.get('playlist'), function(song) { return song.name === name });
-    this.set('playlist', newPlaylist);
-    this.set('currentlyActive', null)
   },
 
   goBack: function() {
