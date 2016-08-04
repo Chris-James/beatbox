@@ -341,6 +341,16 @@ app.on({
   },
 
   updateTempLink: function updateTempLink(songId, path) {
+
+    /**
+     * @desc Sends 'path' to Dropbox api and gets back a link to a streamable file.
+     * songId represents a song currently in our previously requested songs object.
+     * Updates streamable link for song to newly returned link.
+     *
+     * @param songId {String} -
+     * @param path {String} -
+    **/
+
     dbx.filesGetTemporaryLink({path: path})
     .then(
       response => {
