@@ -261,6 +261,7 @@ app.on({
     const songs = this.get('songs');
     let song;
 
+    // The song selected is not in playlist, add it.
     if (!inPlaylist) {
 
       // Check if song has been requested before.
