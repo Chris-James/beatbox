@@ -281,7 +281,10 @@ app.on({
         console.log(`Error in add: ${_.valuesIn(error)}`);
       });
     } else {
-      console.log('in playlit already')
+
+      // The song selected IS in the playlist, remove it.
+      _.remove(this.get('playlist'), function(song) { return song.name === name });
+      this.update();
     }
   },
 
