@@ -21,15 +21,18 @@
       {{> itemContent }}
     </li>
   {{else}}
-    {{#if !inPlaylist(name)}}
-      <li on-click="addToPlaylist:{{name}},{{path}}" class="list-group-item {{ isCurrentlyActive(name) ? 'selected': '' }}">
+    <li on-click="updatePlaylist:{{name}},{{path}},{{id}}" class="list-group-item {{ isCurrentlyActive(name) ? 'selected': '' }}">
+      {{> itemContent }}
+    </li>
+    <!-- {{#if !inPlaylist(name)}}
+      <li on-click="updatePlaylist:{{name}},{{path}}" class="list-group-item {{ isCurrentlyActive(name) ? 'selected': '' }}">
         {{> itemContent }}
       </li>
     {{else}}
       <li on-click="removeFromPlaylist:{{name}}" class="list-group-item {{ isCurrentlyActive(name) ? 'selected': '' }}">
         {{> itemContent }}
       </li>
-    {{/if}}
+    {{/if}} -->
   {{/if}}
 {{/partial}}
 
