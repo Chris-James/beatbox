@@ -245,7 +245,7 @@ app.on({
     }
   },
 
-  addToPlaylist: function(event, name, path) {
+  updatePlaylist: function(event, name, path, id) {
 
     /**
      * @desc Sends path to Dropbox api and gets back a link to a streamable file.
@@ -256,7 +256,10 @@ app.on({
      * @param path {String} path -
     **/
 
-    const inPlaylist = _.findIndex(this.get('playlist'), function(song) { return song.name === name }) >= 0;
+    const currentPlaylist = this.get('playlist');
+    const inPlaylist = _.findIndex(currentPlaylist, (song) => { return song.name === name }) >= 0;
+    const songs = this.get('songs');
+    let song;
 
     if (!inPlaylist) {
 
