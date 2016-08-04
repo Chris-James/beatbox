@@ -338,6 +338,18 @@ app.on({
         });
       }
     }
+  },
+
+  updateTempLink: function updateTempLink(songId, path) {
+    dbx.filesGetTemporaryLink({path: path})
+    .then(
+      response => {
+        this.set(`songs.${songId}.link`, response.link);
+      }
+    )
+    .catch(
+      error => { console.error(error.error); }
+    );
   }
 });
 
