@@ -96,6 +96,15 @@ const app = new Ractive({
 
 app.on({
 
+  stopSong: function() {
+
+    // The audio object has no .stop() method.
+    // http://stackoverflow.com/questions/14834520/html5-audio-stop-function#14836099
+    audio.pause();
+    this.set('playing', false);
+    audio.currentTime = 0;
+  },
+
   quit: function() {
     client.request('terminate');
   },
