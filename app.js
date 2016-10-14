@@ -111,12 +111,21 @@ app.on({
 
   jumpForward: function() {
 
-    // Stop the current song
-    audio.pause();
-    audio.currentTime = 0;
-    this.set('playing', false);
+    const currentPosition = this.get('playlistPosition');
+    const lastSongOnPlaylist = (this.get('playlist').length - 1);
 
-    this.fire('play');
+    if (this.get('allowJump')) {
+
+      this.fire('stopSong');
+
+      if (currentPosition === lastSongOnPlaylist) {
+        this.set('playlistPosition', 0);
+      } else {
+        this.add('playlistPosition');
+      }
+
+      this.fire('play');
+    }
   },
 
   jumpBack: function() {
