@@ -47,5 +47,10 @@ module.exports = {
     **/
 
     return name.slice(-4) === '.mp3' || name.slice(-4) === '.m4a';
-}
+  },
+  hasValidTempLink(song) {
+    const FOUR_HOURS = 14400000;
+
+    return (Date.now() - song.generatedAt) < FOUR_HOURS;
+  }
 };
