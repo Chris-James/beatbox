@@ -130,18 +130,18 @@ app.on({
 
   jumpBack: function() {
 
+    const currentPosition = this.get('playlistPosition');
+    const lastSongOnPlaylist = (this.get('playlist').length - 1);
+
     if (this.get('allowJump')) {
 
-      // Stop the current song
-      audio.pause();
-      audio.currentTime = 0;
-      this.set('playing', false);
+      this.fire('stopSong');
 
-      // NOTE: If jumpBack is called while playing the last song in the
-      // playlist, the value of playlistPosition will be set to -1.
-      // Since the next value is 0 (the start of the playlist) it doesn't
-      // cause an error in playback.
-      this.subtract('playlistPosition');
+      if (currentPosition === 0) {
+        this.set('playlistPosition', lastSongOnPlaylist);
+      } else {
+        this.subtract('playlistPosition');
+      }
 
       this.fire('play');
     }
