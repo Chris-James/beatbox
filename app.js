@@ -334,8 +334,31 @@ app.on({
     } else {
 
       // The song selected IS in the playlist, remove it.
-      _.remove(this.get('playlist'), function(song) { return song.name === name });
+      this.fire('removeSong', name);
+
       this.update();
+    }
+
+  },
+
+  removeSong: function(songName) {
+
+    /**
+     * @desc Removes target song from current playlist & updates our current
+     * position on the playlist if necessary.
+     * @param songName {String} - The name of the song to remove.
+    **/
+
+    const currentPosition = this.get('playlistPosition');
+    const indexofRemovedSong = _.findIndex(this.get('playlist'), function(song) { return song.name === songName });
+
+    _.remove(this.get('playlist'), function(song) { return song.name === songName });
+
+    if (indexofRemovedSong === currentPosition) {
+      this.fire('stopSong');
+      this.fire('play');
+    } else if (indexofRemovedSong < currentPosition) {
+      this.subtract('playlistPosition');
     }
 
   },
