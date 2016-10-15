@@ -317,7 +317,8 @@ app.on({
             id: id,
             path: path,
             name: response.metadata.name.slice(0,-4),
-            link: response.link
+            link: response.link,
+            generatedAt: Date.now()
           };
 
           // Push song onto playlist
@@ -429,6 +430,7 @@ app.on({
     .then(
       response => {
         this.set(`songs.${songId}.link`, response.link);
+        this.set(`songs.${songId}.generatedAt`, Date.now());
       }
     )
     .catch(
