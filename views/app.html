@@ -36,11 +36,16 @@
       {{#if type === 'folder'}}
         <span class="icon icon-right-open-big"></span>
       {{else}}
+        {{! type is 'song'}}
         {{#if isCurrentlyPlaying(name)}}
-          <span style="color: #3498db;" class="icon icon-note"></span>
+          <span style="color: #27ae60;" class="icon icon-note"></span>
         {{else}}
-          {{#if inPlaylist(name) && !playlistActive}}
-            <span style="color: #27ae60;" class="icon icon-check"></span>
+          {{#if !playlistActive}}
+            {{#if inPlaylist(name)}}
+              <span style="color: #3498db;" class="icon icon-note"></span>
+            {{else}}
+            <span style="color: #bdc3c7;" class="icon icon-note"></span>
+            {{/if}}
           {{/if}}
         {{/if}}
       {{/if}}
