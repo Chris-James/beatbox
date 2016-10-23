@@ -288,17 +288,11 @@ app.on({
 
         song = this.get(`songs.${id}`);
 
-        // It has been requested,
-        // validate the song's link & update it if necessary.
-        // NOTE: Dropbox temporary links expire after 4 hours.
-        request.get(song.link)
-        .on('response', function(response) {
-
-          // 410 = Expired, 200 = Valid.
-          if (response.statusCode === 410) {
-            app.fire('updateTempLink', song.id, song.path);
-          }
-        });
+        // Dropbox temporary links expire after 4 hours.
+        // If the song was originally requested more than 4 hours ago, update it.
+        if (!hasValidTempLink(song)) {
+          app.fire('updateTempLink', song.id, song.path);
+        }
 
         // We have a streamable link for the song,
         // retrieve song by id & add it to playlist.
